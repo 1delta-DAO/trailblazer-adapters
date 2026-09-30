@@ -53,3 +53,7 @@ Create a pull request (PR) on GitHub to merge your changes into the main branch.
 ### 5. Review and Merge
 
 Wait for the PR to be reviewed by the maintainers. Once approved, your changes will be merged, and the protocol info will be added to trailblazers.
+
+## Dependency updates and local verification
+
+The CLI requires Go 1.25 or newer. Its Ethereum client, cryptography, and WebSocket dependencies are updated to patched releases in `go.mod` and `go.sum`. To verify without contacting Taiko RPC or using a wallet, run `go test ./... -run '^TestProtocols$'` to compile all packages and run the local whitelist test, then `go run . --help` to smoke-test CLI startup. The other existing adapter tests contact the live Taiko RPC and are not covered by this offline check.
